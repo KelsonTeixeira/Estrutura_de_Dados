@@ -93,7 +93,7 @@ int pos (char user [max], char pilha [max], char posfixa [max]){
 		if (user [i] == '('){			
 			if (pilha [t] == 0){
 				pilha [t] = user [i];
-				i++;
+				t++;
 			}else{
 				t++;
 				pilha[t] = user[i];

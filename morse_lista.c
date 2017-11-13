@@ -23,7 +23,7 @@ lista_morse * criar_lista (void) {
 	return aux;
 }
 
-int write_code (lista_morse * no, FILE * arq){
+int write_lista (lista_morse * no, FILE * arq){
 	char read [15];
 	char dado;	
 	int i, j = 0;
@@ -61,22 +61,20 @@ void print_lista (lista_morse * no){
 	}
 }
 
-int readmorse (FILE * arq, lista_morse * no){
+int decodify_lista (FILE * arq, lista_morse * no){
 	lista_morse * aux;
 	aux = no;
 	char read [15];	
 	int j;
 	while (fscanf (arq, "%s", read) == 1){
-		/*printf ("read : %s\n", read);*/
 		j = 0;
 		while(aux != NULL && j == 0){
-			/*aux->code[strlen(aux->code)] = '\0';*/
 			if (strcmp (read, aux->code) == 0){
 				printf ("%c", aux->dado);
-				j++;
+				aux = NULL;
 			}else if(read [0] == '/'){
 				printf (" ");
-				j++;
+				aux = NULL;
 			}else{
 				aux = aux->next;
 			}
@@ -87,7 +85,7 @@ int readmorse (FILE * arq, lista_morse * no){
 	return 0;
 }
 
-int read_message (FILE * arq){
+int read_code_lista (FILE * arq){
 	char code [15];
 	while (fgets (code, 15, arq) != NULL){
 		printf ("%s", code);
@@ -106,13 +104,13 @@ int main (){
 	arq_message = fopen ("mensagem.txt", "r");
 
 	no = criar_lista();
-	write_code (no, arq_morse);	
+	write_lista (no, arq_morse);	
 	printf ("\nMENSAGEM CODIFICADA:\n");
-	read_message (arq_message);
+	read_code_lista (arq_message);
 	fclose (arq_message);
 	arq_message = fopen ("mensagem.txt", "r");
 	printf("\nTEXTO DECODIFICADO: \n\n");
-	readmorse (arq_message, no);
+	decodify_lista (arq_message, no);
 
 
 	/*print_lista (no);*/

@@ -22,7 +22,7 @@ no_morse * criarNo (void){
 	return aux;  
 }
 
-int write_morse (no_morse * raiz, FILE * arq, char code [15]){
+int write_arvore (no_morse * raiz, FILE * arq, char code [15]){
 	no_morse * aux;
 	aux = raiz;
 	char dado;
@@ -56,7 +56,7 @@ int write_morse (no_morse * raiz, FILE * arq, char code [15]){
 	return 0;
 }
 
-int read_morse (no_morse * raiz, FILE * arquivo){
+int decodify_arvore (no_morse * raiz, FILE * arquivo){
 	no_morse * aux;
 	aux = raiz;
 	char code;
@@ -81,7 +81,7 @@ int read_morse (no_morse * raiz, FILE * arquivo){
 	return 0;
 }
 
-int read_message (FILE * arq){
+int read_text_arvore (FILE * arq){
 	char code [15];
 	while (fgets (code, 15, arq) != NULL){
 		printf ("%s", code);
@@ -99,14 +99,14 @@ int main (){
 	arq_message = fopen ("mensagem.txt", "r");
 
 	raiz = criarNo();
-	write_morse (raiz, arq_morse, code);
+	write_arvore (raiz, arq_morse, code);
 	printf ("\nMENSAGEM CODIFICADA:\n");
-	read_message (arq_message);
+	read_text_arvore (arq_message);
 	printf ("\n");
 	fclose (arq_message);
 	arq_message = fopen ("mensagem.txt", "r");
 	printf("TEXTO DECODIFICADO: \n\n");
-	read_morse (raiz, arq_message);
+	decodify_arvore (raiz, arq_message);
 	printf ("\n");
 
 	fclose (arq_morse);

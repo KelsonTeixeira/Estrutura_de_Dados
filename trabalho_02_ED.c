@@ -10,16 +10,16 @@
 #include <unistd.h>
 #include <time.h>
 
-typedef struct no {
+typedef struct raiz {
 	char dado;
-	struct no * esq;
-	struct no * dir;
+	struct raiz * esq;
+	struct raiz * dir;
 } no_morse;
 
-typedef struct lista{
+typedef struct no_lista{
 	char dado;
 	char code [15];
-	struct lista * next;
+	struct no_lista * next;
 }lista_morse;
 
 no_morse * criarNo (void){

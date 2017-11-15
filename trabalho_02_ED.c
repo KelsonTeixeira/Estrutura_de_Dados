@@ -22,7 +22,7 @@ typedef struct no_lista{
 	struct no_lista * next;
 }lista_morse;
 
-no_morse * criarNo (void){
+no_morse * criarRaiz (void){
 	no_morse * aux = (no_morse *)malloc(sizeof(no_morse));
 	aux->esq = NULL;
 	aux->dir = NULL;
@@ -50,7 +50,7 @@ void write_arvore (no_morse * raiz, FILE * arq, char code [15]){
 		while (code [i] != '\0'){
 			if (code [i] == '.'){
 				if (aux->esq == NULL){
-					aux->esq = criarNo();
+					aux->esq = criarRaiz();
 					aux = aux->esq;
 				}else{
 					aux = aux->esq;
@@ -58,7 +58,7 @@ void write_arvore (no_morse * raiz, FILE * arq, char code [15]){
 			}
 			if (code [i] == '-'){
 				if (aux->dir == NULL){
-					aux->dir = criarNo();
+					aux->dir = criarRaiz();
 					aux = aux->dir;
 				}else{
 					aux = aux->dir;
@@ -168,7 +168,7 @@ void arvore_function(){
 	FILE * arq_message;	
 
 
-	raiz = criarNo();
+	raiz = criarRaiz();
 	
 	arq_morse = fopen ("morse.txt", "r");	
 	write_arvore (raiz, arq_morse, code);

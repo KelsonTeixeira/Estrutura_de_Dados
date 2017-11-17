@@ -108,15 +108,12 @@ void decodify_arvore (no_morse * raiz, FILE * arquivo){
 		fscanf (arquivo, "%c", &code);
 		if (code == '.'){
 			aux = aux->esq;
-		}
-		if (code == '-'){
+		}else if (code == '-'){
 			aux = aux->dir;
-		}
-		if (code == ' '){
+		}else if (code == ' '){
 			printf ("%c", aux->dado);
 			aux = raiz;
-		}
-		if (code == '/'){
+		}else if (code == '/'){
 			printf (" ");
 		}
 	}
